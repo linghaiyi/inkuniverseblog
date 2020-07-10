@@ -163,11 +163,11 @@ sidebar:
 # Sidebar Avatar
 avatar:
   # Replace the default image and set the url here.
-  url: #/images/avatar.gif
+  url: /images/avatar.png
   # If true, the avatar will be dispalyed in circle.
-  rounded: false
+  rounded: true
   # If true, the avatar will be rotated with the cursor.
-  rotated: false
+  rotated: true
 
 # Posts / Categories / Tags in sidebar.
 site_state: true
@@ -280,6 +280,7 @@ reward:
 follow_me:
   Twitter: https://twitter.com/inkuniverse233 || fab fa-twitter
   Telegram: https://t.me/inkuniverse || fab fa-telegram
+  TGroup: https://t.me/coderabbit || fab fa-telegram
   #WeChat: /images/wechat_channel.jpg || fab fa-weixin
   RSS: /atom.xml || fa fa-rss
 
