@@ -20,17 +20,17 @@ mathjax: true
 * 选择排序
         这个大家都会，就不详细解释了 ~~（逃~~
         
-![选择](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9mb3J1bS5taWFuYmFvYmFuLmNuL2RhdGEvYXR0YWNobWVudC9mb3J1bS8yMDE4MDMvMjAvMTQwMTU0ajBjaThuOW52dm4zNTNuMC5naWY '选择排序')
+![选择](https://gitee.com/inkuniverse/picture_bed/raw/master/img/20200710191819.png '选择排序')
 
 * 插入排序
 
-![插入](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9mb3J1bS5taWFuYmFvYmFuLmNuL2RhdGEvYXR0YWNobWVudC9mb3J1bS8yMDE4MDMvMjAvMTQwMTU1aDBhdDEzMWZrejMzajFhZi5naWY '插入')
+![插入](https://gitee.com/inkuniverse/picture_bed/raw/master/img/20200710191847.png '插入')
 
 
 * 冒泡排序
 
 
- ![冒泡](https://images2018.cnblogs.com/blog/1391679/201806/1391679-20180618163321525-1936669878.gif '冒泡排序')
+ ![冒泡](https://gitee.com/inkuniverse/picture_bed/raw/master/img/20200710191900.png '冒泡排序')
 
 
 * 归并排序
@@ -39,9 +39,9 @@ mathjax: true
      详情请见[点我](https://www.cnblogs.com/lhy-cblog/p/merge-sort.html)
         
         
-![归并1](https://img2018.cnblogs.com/blog/1653262/202001/1653262-20200123085200050-668412306.png '归并1')
+![归并1](https://gitee.com/inkuniverse/picture_bed/raw/master/img/20200710191934.png '归并1')
 
-![归并2](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9mb3J1bS5taWFuYmFvYmFuLmNuL2RhdGEvYXR0YWNobWVudC9mb3J1bS8yMDE4MDMvMjAvMTQwMTU3Z2tybmtrc3BwcG90b3Jrcy5naWY '归并2')
+![归并2](https://gitee.com/inkuniverse/picture_bed/raw/master/img/20200710191950.png '归并2')
 
 ```cpp
 void ms(int b, int e)
@@ -76,7 +76,7 @@ void ms(int b, int e)
 模拟，顾名思义，就是题目让你干嘛你就干嘛。
 
 ### 例题 校门外的树
-![](https://img2018.cnblogs.com/blog/1653262/202001/1653262-20200130133815952-2119019624.png)
+![题目描述](https://gitee.com/inkuniverse/picture_bed/raw/master/img/20200710192006.png '题目描述')
 
 
 思路：可以建一个数组，保存地铁每一个位置的情况，每次输入l,r，就把这个数组[l,r]部分都变成1，最后再统计有多少0即可

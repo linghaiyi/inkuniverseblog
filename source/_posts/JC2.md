@@ -30,7 +30,7 @@ mathjax: true
 
 > 那么，什么是冗余状态呢？
 >
-> ![](https://tvax4.sinaimg.cn/large/006XR1Pfly1gdnip7eoy5j30m30e775x.jpg)
+> ![](https://gitee.com/inkuniverse/picture_bed/raw/master/img/20200710192101.png)
 >
 > 这是一个关于f(5)的解答树，可以看见，红色的都是被重复计算的，很多节点被重复计算了多次，若数比较大，重复计算的可不止这几个，而是一颗巨大的子树。
 >
