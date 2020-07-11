@@ -31,10 +31,9 @@ jobs:
         npm uninstall hexo-renderer-marked
         npm install hexo-renderer-markdown-it-plus
         hexo g
-        tar zcvf public.tar public/*
 
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2
       with: 
-        name: public.tar
-        path: ./public.tar
+        name: public
+        path: ./public
