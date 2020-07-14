@@ -4,6 +4,8 @@ date: 2020-06-27 13:12:00
 tags: 题解
 ---
 
+![c++](https://img.shields.io/badge/lanuage-c++-blue) [![题解](https://img.shields.io/badge/type-题解-blue)](/tags/%E9%A2%98%E8%A7%A3/)
+
 方法： 最小生成树算法。
 <!--more-->
 

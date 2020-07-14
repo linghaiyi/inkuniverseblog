@@ -4,6 +4,8 @@ date: 2020-07-06 15:09:32
 tags: 题解
 ---
 
+
+![c++](https://img.shields.io/badge/lanuage-c++-blue) [![题解](https://img.shields.io/badge/type-题解-blue)](/tags/%E9%A2%98%E8%A7%A3/)
 核心思想：贪心
 
 # 题目描述
