@@ -6,6 +6,7 @@ tags: 笔记
 
 # 核心知识点
 树链剖分主要可以解决一类树上的值问题，相当于把树上问题转换成了链上的问题。
+<!--more-->
 
 # dfs序
 ![例题, https://yugu-cloud-disk.oss-cn-shanghai.aliyuncs.com/live/yugu20stg6-cdsfcesf/slide.pdf?OSSAccessKeyId=LTAI4FsiWjpNs1epYQp3d1Ag&Expires=1595346103&Signature=0ChdqkRUjdEa%2FXxmb7GSYTg3Dzo%3D page 98](https://gitee.com/inkuniverse/picture_bed/raw/master/img/20200721175943.png)
