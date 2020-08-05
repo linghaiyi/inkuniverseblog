@@ -5,7 +5,7 @@ tags: 笔记
 ---
 
 # 课件：
-
-<object width="100%" height="100%" type="application/pdf" data="/pdfs/bzst.pdf">
+<!--more-->
+<object width="100%" height="90%" type="application/pdf" data="/pdfs/bzst.pdf">
     <p>Insert your error message here, if the PDF cannot be displayed.</p>
 </object>
