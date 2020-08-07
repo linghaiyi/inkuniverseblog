@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Inkuniverse Editor</title>
+<style type="text/css" media="screen">
+    #editor { 
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+</style>
+</head>
+<body>
+
+<div id="editor">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+inline int read()
+{
+    int x=0,f=1,c=getchar();
+    while(c < '0' || c > '9'){if(c == '-')f=-f;c = getchar();}
+    while(c >= '0' && c <= '9'){x = (x<<1) + (x<<3) + (c^48);c = getchar();}
+    return x * f;
+}
+//console :: document.getElementById('editor').style.fontSize='16px';
+</div>
+    
+<script src="/ace-builds/master/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/monokai");
+    if(window.location.hash=="#" || window.location.hash=="")editor.session.setMode("ace/mode/c_cpp");
+    else editor.session.setMode("ace/mode/" + window.location.hash.substring(1));
+    document.getElementById('editor').style.fontSize='16px';
+</script>
+</body>
+</html>
