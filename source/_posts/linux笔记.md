@@ -1,5 +1,5 @@
 ---
-title: linux笔记
+title: linux笔记(自用)
 date: 2020-08-18 12:31:49
 tags:
 ---
