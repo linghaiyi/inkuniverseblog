@@ -1,6 +1,7 @@
 ---
 title: JC1 排序模拟枚举
 tags: 洛谷笔记
+date: 2020-08-05 20:06:56
 mathjax: true
 ---
 
