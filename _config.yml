@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 墨宇的博客
+title: 海逸的博客
 subtitle: Blog
 description: ''
 keywords:
-author: 墨宇
+author: 海逸
 language: zh-CN
 timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://inkuniverse.vercel.app/
+url: https://lhy-blog.vercel.app/
 root: /
 permalink: :title/
 permalink_defaults:
