@@ -1,25 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>墨宇的博客</title>
+  <title>海逸的博客</title>
   
   <subtitle>Blog</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://inkuniverse.vercel.app/"/>
-  <updated>2021-08-05T12:10:49.394Z</updated>
-  <id>https://inkuniverse.vercel.app/</id>
+  <link href="https://lhy-blog.vercel.app/"/>
+  <updated>2021-08-07T13:08:58.646Z</updated>
+  <id>https://lhy-blog.vercel.app/</id>
   
   <author>
-    <name>墨宇</name>
+    <name>海逸</name>
     
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>day21</title>
+    <link href="https://lhy-blog.vercel.app/day21/"/>
+    <id>https://lhy-blog.vercel.app/day21/</id>
+    <published>2021-08-06T14:54:41.000Z</published>
+    <updated>2021-08-07T13:08:58.646Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="树形dp和状压dp"><a class="markdownIt-Anchor" href="#树形dp和状压dp"></a> 树形DP和状压DP</h1><a id="more"></a><h3 id="状压dp"><a class="markdownIt-Anchor" href="#状压dp"></a> 状压DP</h3><p>DP使用状态压缩作为DP状态。<br />状态压缩动态规划，俗称的状压DP，是利用计算机 <s>二</s> 进制的性质来描述状态的一种DP方式。</p><p>很多棋盘问题都运用到了状压，同时，状压也很经常和BFS及DP连用。</p><p>状压dp其实就是将状态压缩成进制来保存,其特征就是看起来有点像搜索，每个格子的状态只有1或0 ，是一类非常典型的动态规划。</p><p>例题：<br />P1896 [SCOI2005]互不侵犯)<br />实际上状压 dp 就是采用位运算，来记录更多的必须记录的状态来做的dp</p><p>考虑到每行每列之间都有互相的约束关系。因此，我们可以用行和列作为另一个状态的部分。用一个新的方法表示行和列的状态：数字。考虑任何一个十进制数都可以转化成一个二进制数，而一行的状态就可以表示成这样——例如：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo stretchy="false">(</mo><mn>1010</mn><msub><mo stretchy="false">)</mo><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">(1010)_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mord">0</span><span class="mord">1</span><span class="mord">0</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></p><p>就表示：这一行的第一个格子没有国王，第二个格子放了国王，第三个格子没有放国王，第四个格子放了国王。而这个二进制下的数就可以转化成十进制： <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo stretchy="false">(</mo><mn>10</mn><msub><mo stretchy="false">)</mo><mn>10</mn></msub></mrow><annotation encoding="application/x-tex">(10)_{10}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mord">0</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">0</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></p><p>于是，我们的三个状态就有了：第几行（用<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>表示）、此行放什么状态（用<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span>表示）、包括这一行已经使用了的国王数（用<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">s</span></span></span></span>表示）。</p><p>考虑状态转移方程。我们预先处理出每一个状态<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">s[x]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mopen">[</span><span class="mord mathdefault">x</span><span class="mclose">]</span></span></span></span>其中包含二进制下1的个数，及此状态下这一行放的国王个数<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mi>u</mi><mi>m</mi><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">num[x]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">n</span><span class="mord mathdefault">u</span><span class="mord mathdefault">m</span><span class="mopen">[</span><span class="mord mathdefault">x</span><span class="mclose">]</span></span></span></span>，于是就有：</p><p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>s</mi><mo stretchy="false">]</mo><mo>=</mo><mi>s</mi><mi>u</mi><mi>m</mi><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">[</mo><mi>i</mi><mi mathvariant="normal">−</mi><mn>1</mn><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>k</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>s</mi><mi mathvariant="normal">−</mi><mi>n</mi><mi>u</mi><mi>m</mi><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo><mo stretchy="false">]</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f[i][j][s]=sum(f[i−1][k][s−num[j]])</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault">s</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">u</span><span class="mord mathdefault">m</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mord">−</span><span class="mord">1</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault">s</span><span class="mord">−</span><span class="mord mathdefault">n</span><span class="mord mathdefault">u</span><span class="mord mathdefault">m</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mclose">]</span><span class="mclose">)</span></span></span></span></span></p><p>f[i][j][s]就表示在只考虑前<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>行时，在前<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>行（包括第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>行）有且仅有s个国王，且第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>行国王的情况是编号为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span>的状态时情况的总数。而<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span>就代表第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">i-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.74285em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>行的国王情况的状态编号</p><h3 id="树形dp"><a class="markdownIt-Anchor" href="#树形dp"></a> 树形DP</h3><p>以子树作为DP状态的动态规划</p><blockquote><p>一般dp设计状态时用一个点（子树的根）来表示子树，并且附加一个状态</p></blockquote><p>典型例题：<a href="https://www.luogu.com.cn/problem/P1352" target="_blank" rel="noopener">没有上司的舞会(洛谷传送门)</a></p><p>做法:<br />将上司与下属的关系建成一颗树</p><p>设 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>u</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mn>0</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">dp[u][0]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">p</span><span class="mopen">[</span><span class="mord mathdefault">u</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">0</span><span class="mclose">]</span></span></span></span> 表示 u 没有参加舞会时，整个子树的分配方案，且属性为最大值。<br />设 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>u</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">dp[u][1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">p</span><span class="mopen">[</span><span class="mord mathdefault">u</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">1</span><span class="mclose">]</span></span></span></span> 表示 u 参加了舞会时，整个子树的分配方案，属性为最大值。</p><p>由题意可知当 u 参加了舞会时，所有下属必须不参加，因此状态转移时, <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>u</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">dp[u][1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">p</span><span class="mopen">[</span><span class="mord mathdefault">u</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">1</span><span class="mclose">]</span></span></span></span> 只能被 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>v</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mn>0</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">dp[v][0]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">p</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">0</span><span class="mclose">]</span></span></span></span> 更新</p><p>当 u 没有参加舞会，下属可以参加，也可以不参加（注意，参加不一定更优）。<br />因此 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>u</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mn>0</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">dp[u][0]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">p</span><span class="mopen">[</span><span class="mord mathdefault">u</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">0</span><span class="mclose">]</span></span></span></span>可以被<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>v</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mn>0</mn><mo stretchy="false">]</mo><mo separator="true">,</mo><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>v</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mn>1</mn><mo stretchy="false">]</mo><mi mathvariant="normal">更</mi><mi mathvariant="normal">新</mi></mrow><annotation encoding="application/x-tex">dp[v][0], dp[v][1]更新</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">p</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">0</span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">p</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">1</span><span class="mclose">]</span><span class="mord cjk_fallback">更</span><span class="mord cjk_fallback">新</span></span></span></span>.</p><p>转移方程(E为有向)</p><p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>u</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mn>0</mn><mo stretchy="false">]</mo><mo>=</mo><munder><mo>∑</mo><mrow><mo stretchy="false">(</mo><mi>u</mi><mo separator="true">,</mo><mi>v</mi><mo stretchy="false">)</mo><mo>∈</mo><mi>E</mi></mrow></munder><mi>m</mi><mi>a</mi><mi>x</mi><mo stretchy="false">(</mo><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>v</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mn>0</mn><mo stretchy="false">]</mo><mo separator="true">,</mo><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>v</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mn>1</mn><mo stretchy="false">]</mo><mo stretchy="false">)</mo><mo separator="true">;</mo><mspace linebreak="newline"></mspace><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>u</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mn>1</mn><mo stretchy="false">]</mo><mo>=</mo><munder><mo>∑</mo><mrow><mo stretchy="false">(</mo><mi>u</mi><mo separator="true">,</mo><mi>v</mi><mo stretchy="false">)</mo><mo>∈</mo><mi>E</mi></mrow></munder><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>v</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mn>0</mn><mo stretchy="false">]</mo><mo separator="true">;</mo></mrow><annotation encoding="application/x-tex">dp[u][0] = \sum_{(u,v) \in E} max(dp[v][0], dp[v][1]); \\dp[u][1] = \sum_{(u,v) \in E} dp[v][0];</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">p</span><span class="mopen">[</span><span class="mord mathdefault">u</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">0</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.5660100000000003em;vertical-align:-1.516005em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.050005em;"><span style="top:-1.808995em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathdefault mtight">u</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.03588em;">v</span><span class="mclose mtight">)</span><span class="mrel mtight">∈</span><span class="mord mathdefault mtight" style="margin-right:0.05764em;">E</span></span></span></span><span style="top:-3.0500049999999996em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.516005em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span><span class="mopen">(</span><span class="mord mathdefault">d</span><span class="mord mathdefault">p</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">0</span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">p</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">1</span><span class="mclose">]</span><span class="mclose">)</span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">p</span><span class="mopen">[</span><span class="mord mathdefault">u</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">1</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.5660100000000003em;vertical-align:-1.516005em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.050005em;"><span style="top:-1.808995em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathdefault mtight">u</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.03588em;">v</span><span class="mclose mtight">)</span><span class="mrel mtight">∈</span><span class="mord mathdefault mtight" style="margin-right:0.05764em;">E</span></span></span></span><span style="top:-3.0500049999999996em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.516005em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">p</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">0</span><span class="mclose">]</span><span class="mpunct">;</span></span></span></span></span></p><p>答案即为</p><p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>a</mi><msub><mi>x</mi><mtext>x没有入边</mtext></msub><mo stretchy="false">(</mo><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mn>0</mn><mo stretchy="false">]</mo><mo separator="true">,</mo><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mn>1</mn><mo stretchy="false">]</mo><mo stretchy="false">)</mo><mo separator="true">;</mo></mrow><annotation encoding="application/x-tex">max_{\text{x没有入边}}(dp[x][0], dp[x][1]);</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">x</span><span class="mord cjk_fallback mtight">没有入边</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">d</span><span class="mord mathdefault">p</span><span class="mopen">[</span><span class="mord mathdefault">x</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">0</span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">p</span><span class="mopen">[</span><span class="mord mathdefault">x</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">1</span><span class="mclose">]</span><span class="mclose">)</span><span class="mpunct">;</span></span></span></span></span></p><p>代码</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span> + <span class="number">5</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">int</span> to, next;<span class="comment">/*v;*/</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">to:指向的点；</span></span><br><span class="line"><span class="comment">next:表示e[x]的下一条边</span></span><br><span class="line"><span class="comment">v:这条边上的权值</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">&#125;e[N*<span class="number">2</span>];</span><br><span class="line"><span class="keyword">int</span> cnt, head[N],dp[N][<span class="number">2</span>],n,K,L,a[<span class="number">6666</span>];</span><br><span class="line"><span class="keyword">int</span> in[<span class="number">6666</span>];</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">cnt:现在的边数</span></span><br><span class="line"><span class="comment">head[x]:表示点x最后一条边的编号</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y<span class="comment">/*, int v*/</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">e[cnt].to = y;</span><br><span class="line">e[cnt].next = head[x];<span class="comment">//这条边的上一条边的编号</span></span><br><span class="line"><span class="comment">//e[cnt].v = v;</span></span><br><span class="line">head[x] = cnt++;<span class="comment">//更新这个点x的最终边的编号</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">dp[n][<span class="number">1</span>] = a[n];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = head[n]; i != <span class="number">-1</span>; i = e[i].next)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">int</span>&amp; v = e[i].to;</span><br><span class="line">dfs(e[i].to);</span><br><span class="line">dp[n][<span class="number">1</span>] += dp[v][<span class="number">0</span>];</span><br><span class="line">dp[n][<span class="number">0</span>] = max(dp[n][<span class="number">0</span>] + dp[v][<span class="number">1</span>], dp[n][<span class="number">0</span>] + dp[v][<span class="number">0</span>]);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line"><span class="built_in">memset</span>(head, <span class="number">-1</span>, <span class="keyword">sizeof</span>(head));<span class="comment">//初始化</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)<span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++)</span><br><span class="line">&#123;</span><br><span class="line"><span class="built_in">cin</span> &gt;&gt; L &gt;&gt; K;</span><br><span class="line">add(K, L);</span><br><span class="line">in[L]++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n;i++)</span><br><span class="line"><span class="keyword">if</span> (in[i] == <span class="number">0</span>)</span><br><span class="line">&#123; </span><br><span class="line">dfs(i); <span class="built_in">cout</span> &lt;&lt; max(dp[i][<span class="number">0</span>], dp[i][<span class="number">1</span>]); <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;树形dp和状压dp&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#树形dp和状压dp&quot;&gt;&lt;/a&gt; 树形DP和状压DP&lt;/h1&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="笔记" scheme="https://lhy-blog.vercel.app/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>ZROI-day20</title>
-    <link href="https://inkuniverse.vercel.app/day20/"/>
-    <id>https://inkuniverse.vercel.app/day20/</id>
+    <link href="https://lhy-blog.vercel.app/day20/"/>
+    <id>https://lhy-blog.vercel.app/day20/</id>
     <published>2021-08-05T12:06:56.000Z</published>
     <updated>2021-08-05T12:10:49.394Z</updated>
     
@@ -39,14 +60,14 @@
     
     
     
-      <category term="笔记" scheme="https://inkuniverse.vercel.app/tags/%E7%AC%94%E8%AE%B0/"/>
+      <category term="笔记" scheme="https://lhy-blog.vercel.app/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title>ZROI-day2</title>
-    <link href="https://inkuniverse.vercel.app/day2/"/>
-    <id>https://inkuniverse.vercel.app/day2/</id>
+    <link href="https://lhy-blog.vercel.app/day2/"/>
+    <id>https://lhy-blog.vercel.app/day2/</id>
     <published>2021-08-05T08:07:17.000Z</published>
     <updated>2021-08-05T08:34:10.639Z</updated>
     
@@ -60,14 +81,14 @@
     
     
     
-      <category term="笔记" scheme="https://inkuniverse.vercel.app/tags/%E7%AC%94%E8%AE%B0/"/>
+      <category term="笔记" scheme="https://lhy-blog.vercel.app/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title>ZROI-day1</title>
-    <link href="https://inkuniverse.vercel.app/day1/"/>
-    <id>https://inkuniverse.vercel.app/day1/</id>
+    <link href="https://lhy-blog.vercel.app/day1/"/>
+    <id>https://lhy-blog.vercel.app/day1/</id>
     <published>2021-08-05T08:06:21.000Z</published>
     <updated>2021-08-05T08:23:20.097Z</updated>
     
@@ -81,14 +102,14 @@
     
     
     
-      <category term="笔记" scheme="https://inkuniverse.vercel.app/tags/%E7%AC%94%E8%AE%B0/"/>
+      <category term="笔记" scheme="https://lhy-blog.vercel.app/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title>20210216笔记</title>
-    <link href="https://inkuniverse.vercel.app/20210216%E7%AC%94%E8%AE%B0/"/>
-    <id>https://inkuniverse.vercel.app/20210216%E7%AC%94%E8%AE%B0/</id>
+    <link href="https://lhy-blog.vercel.app/20210216%E7%AC%94%E8%AE%B0/"/>
+    <id>https://lhy-blog.vercel.app/20210216%E7%AC%94%E8%AE%B0/</id>
     <published>2021-02-16T12:31:57.000Z</published>
     <updated>2021-08-05T07:50:57.843Z</updated>
     
@@ -109,14 +130,14 @@
     
     
     
-      <category term="笔记" scheme="https://inkuniverse.vercel.app/tags/%E7%AC%94%E8%AE%B0/"/>
+      <category term="笔记" scheme="https://lhy-blog.vercel.app/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title>差分约束</title>
-    <link href="https://inkuniverse.vercel.app/%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F/"/>
-    <id>https://inkuniverse.vercel.app/%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F/</id>
+    <link href="https://lhy-blog.vercel.app/%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F/"/>
+    <id>https://lhy-blog.vercel.app/%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F/</id>
     <published>2020-10-26T13:33:03.000Z</published>
     <updated>2021-08-05T07:50:57.851Z</updated>
     
@@ -130,14 +151,14 @@
     
     
     
-      <category term="笔记" scheme="https://inkuniverse.vercel.app/tags/%E7%AC%94%E8%AE%B0/"/>
+      <category term="笔记" scheme="https://lhy-blog.vercel.app/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title>超有爱的分块技巧</title>
-    <link href="https://inkuniverse.vercel.app/%E8%B6%85%E6%9C%89%E7%88%B1%E7%9A%84%E5%88%86%E5%9D%97%E6%8A%80%E5%B7%A7/"/>
-    <id>https://inkuniverse.vercel.app/%E8%B6%85%E6%9C%89%E7%88%B1%E7%9A%84%E5%88%86%E5%9D%97%E6%8A%80%E5%B7%A7/</id>
+    <link href="https://lhy-blog.vercel.app/%E8%B6%85%E6%9C%89%E7%88%B1%E7%9A%84%E5%88%86%E5%9D%97%E6%8A%80%E5%B7%A7/"/>
+    <id>https://lhy-blog.vercel.app/%E8%B6%85%E6%9C%89%E7%88%B1%E7%9A%84%E5%88%86%E5%9D%97%E6%8A%80%E5%B7%A7/</id>
     <published>2020-10-07T03:35:08.000Z</published>
     <updated>2021-08-05T07:50:57.851Z</updated>
     
@@ -151,14 +172,14 @@
     
     
     
-      <category term="笔记" scheme="https://inkuniverse.vercel.app/tags/%E7%AC%94%E8%AE%B0/"/>
+      <category term="笔记" scheme="https://lhy-blog.vercel.app/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title>洛谷10月月赛题解</title>
-    <link href="https://inkuniverse.vercel.app/%E6%B4%9B%E8%B0%B710%E6%9C%88%E6%9C%88%E8%B5%9B%E9%A2%98%E8%A7%A3/"/>
-    <id>https://inkuniverse.vercel.app/%E6%B4%9B%E8%B0%B710%E6%9C%88%E6%9C%88%E8%B5%9B%E9%A2%98%E8%A7%A3/</id>
+    <link href="https://lhy-blog.vercel.app/%E6%B4%9B%E8%B0%B710%E6%9C%88%E6%9C%88%E8%B5%9B%E9%A2%98%E8%A7%A3/"/>
+    <id>https://lhy-blog.vercel.app/%E6%B4%9B%E8%B0%B710%E6%9C%88%E6%9C%88%E8%B5%9B%E9%A2%98%E8%A7%A3/</id>
     <published>2020-10-06T13:23:07.000Z</published>
     <updated>2021-08-05T07:50:57.851Z</updated>
     
@@ -176,14 +197,14 @@
     
     
     
-      <category term="题解" scheme="https://inkuniverse.vercel.app/tags/%E9%A2%98%E8%A7%A3/"/>
+      <category term="题解" scheme="https://lhy-blog.vercel.app/tags/%E9%A2%98%E8%A7%A3/"/>
     
   </entry>
   
   <entry>
     <title>超有爱的树型DP</title>
-    <link href="https://inkuniverse.vercel.app/%E8%B6%85%E6%9C%89%E7%88%B1%E7%9A%84DP/"/>
-    <id>https://inkuniverse.vercel.app/%E8%B6%85%E6%9C%89%E7%88%B1%E7%9A%84DP/</id>
+    <link href="https://lhy-blog.vercel.app/%E8%B6%85%E6%9C%89%E7%88%B1%E7%9A%84DP/"/>
+    <id>https://lhy-blog.vercel.app/%E8%B6%85%E6%9C%89%E7%88%B1%E7%9A%84DP/</id>
     <published>2020-09-06T12:20:56.000Z</published>
     <updated>2021-08-05T07:50:57.851Z</updated>
     
@@ -201,14 +222,14 @@
     
     
     
-      <category term="笔记" scheme="https://inkuniverse.vercel.app/tags/%E7%AC%94%E8%AE%B0/"/>
+      <category term="笔记" scheme="https://lhy-blog.vercel.app/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title>VJudge如何交题</title>
-    <link href="https://inkuniverse.vercel.app/VJudge%E5%A6%82%E4%BD%95%E4%BA%A4%E9%A2%98/"/>
-    <id>https://inkuniverse.vercel.app/VJudge%E5%A6%82%E4%BD%95%E4%BA%A4%E9%A2%98/</id>
+    <link href="https://lhy-blog.vercel.app/VJudge%E5%A6%82%E4%BD%95%E4%BA%A4%E9%A2%98/"/>
+    <id>https://lhy-blog.vercel.app/VJudge%E5%A6%82%E4%BD%95%E4%BA%A4%E9%A2%98/</id>
     <published>2020-08-21T13:22:11.000Z</published>
     <updated>2021-08-05T07:50:57.843Z</updated>
     
@@ -228,14 +249,14 @@
     
     
     
-      <category term="笔记" scheme="https://inkuniverse.vercel.app/tags/%E7%AC%94%E8%AE%B0/"/>
+      <category term="笔记" scheme="https://lhy-blog.vercel.app/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title>linux笔记(自用)</title>
-    <link href="https://inkuniverse.vercel.app/linux%E7%AC%94%E8%AE%B0/"/>
-    <id>https://inkuniverse.vercel.app/linux%E7%AC%94%E8%AE%B0/</id>
+    <link href="https://lhy-blog.vercel.app/linux%E7%AC%94%E8%AE%B0/"/>
+    <id>https://lhy-blog.vercel.app/linux%E7%AC%94%E8%AE%B0/</id>
     <published>2020-08-18T04:31:49.000Z</published>
     <updated>2021-08-05T07:50:57.843Z</updated>
     
@@ -253,8 +274,8 @@
   
   <entry>
     <title>最大流学习笔记</title>
-    <link href="https://inkuniverse.vercel.app/%E6%9C%80%E5%A4%A7%E6%B5%81%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    <id>https://inkuniverse.vercel.app/%E6%9C%80%E5%A4%A7%E6%B5%81%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</id>
+    <link href="https://lhy-blog.vercel.app/%E6%9C%80%E5%A4%A7%E6%B5%81%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>https://lhy-blog.vercel.app/%E6%9C%80%E5%A4%A7%E6%B5%81%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</id>
     <published>2020-08-06T14:11:05.000Z</published>
     <updated>2021-08-05T07:50:57.851Z</updated>
     
@@ -272,14 +293,14 @@
     
     
     
-      <category term="笔记" scheme="https://inkuniverse.vercel.app/tags/%E7%AC%94%E8%AE%B0/"/>
+      <category term="笔记" scheme="https://lhy-blog.vercel.app/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title>JC1 排序模拟枚举</title>
-    <link href="https://inkuniverse.vercel.app/JC1/"/>
-    <id>https://inkuniverse.vercel.app/JC1/</id>
+    <link href="https://lhy-blog.vercel.app/JC1/"/>
+    <id>https://lhy-blog.vercel.app/JC1/</id>
     <published>2020-08-05T12:06:56.000Z</published>
     <updated>2021-08-05T14:58:46.250Z</updated>
     
@@ -304,14 +325,14 @@
     
     
     
-      <category term="洛谷笔记" scheme="https://inkuniverse.vercel.app/tags/%E6%B4%9B%E8%B0%B7%E7%AC%94%E8%AE%B0/"/>
+      <category term="洛谷笔记" scheme="https://lhy-blog.vercel.app/tags/%E6%B4%9B%E8%B0%B7%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title>JC2 递推，递归与分治</title>
-    <link href="https://inkuniverse.vercel.app/JC2/"/>
-    <id>https://inkuniverse.vercel.app/JC2/</id>
+    <link href="https://lhy-blog.vercel.app/JC2/"/>
+    <id>https://lhy-blog.vercel.app/JC2/</id>
     <published>2020-08-05T12:06:56.000Z</published>
     <updated>2021-08-06T00:05:24.191Z</updated>
     
@@ -335,14 +356,14 @@
     
     
     
-      <category term="笔记" scheme="https://inkuniverse.vercel.app/tags/%E7%AC%94%E8%AE%B0/"/>
+      <category term="笔记" scheme="https://lhy-blog.vercel.app/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title>TG1 基础数据结构</title>
-    <link href="https://inkuniverse.vercel.app/TG1/"/>
-    <id>https://inkuniverse.vercel.app/TG1/</id>
+    <link href="https://lhy-blog.vercel.app/TG1/"/>
+    <id>https://lhy-blog.vercel.app/TG1/</id>
     <published>2020-08-05T12:06:56.000Z</published>
     <updated>2021-08-06T00:19:11.107Z</updated>
     
@@ -366,14 +387,14 @@ body
     
     
     
-      <category term="笔记" scheme="https://inkuniverse.vercel.app/tags/%E7%AC%94%E8%AE%B0/"/>
+      <category term="笔记" scheme="https://lhy-blog.vercel.app/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title>倍增与ST表</title>
-    <link href="https://inkuniverse.vercel.app/%E5%80%8D%E5%A2%9E%E4%B8%8EST%E8%A1%A8/"/>
-    <id>https://inkuniverse.vercel.app/%E5%80%8D%E5%A2%9E%E4%B8%8EST%E8%A1%A8/</id>
+    <link href="https://lhy-blog.vercel.app/%E5%80%8D%E5%A2%9E%E4%B8%8EST%E8%A1%A8/"/>
+    <id>https://lhy-blog.vercel.app/%E5%80%8D%E5%A2%9E%E4%B8%8EST%E8%A1%A8/</id>
     <published>2020-08-05T07:12:49.000Z</published>
     <updated>2021-08-05T07:50:57.843Z</updated>
     
@@ -387,14 +408,14 @@ body
     
     
     
-      <category term="笔记" scheme="https://inkuniverse.vercel.app/tags/%E7%AC%94%E8%AE%B0/"/>
+      <category term="笔记" scheme="https://lhy-blog.vercel.app/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title>洛谷P1528切蛋糕题解</title>
-    <link href="https://inkuniverse.vercel.app/%E6%B4%9B%E8%B0%B7P1528%E5%88%87%E8%9B%8B%E7%B3%95%E9%A2%98%E8%A7%A3/"/>
-    <id>https://inkuniverse.vercel.app/%E6%B4%9B%E8%B0%B7P1528%E5%88%87%E8%9B%8B%E7%B3%95%E9%A2%98%E8%A7%A3/</id>
+    <link href="https://lhy-blog.vercel.app/%E6%B4%9B%E8%B0%B7P1528%E5%88%87%E8%9B%8B%E7%B3%95%E9%A2%98%E8%A7%A3/"/>
+    <id>https://lhy-blog.vercel.app/%E6%B4%9B%E8%B0%B7P1528%E5%88%87%E8%9B%8B%E7%B3%95%E9%A2%98%E8%A7%A3/</id>
     <published>2020-08-05T07:09:43.000Z</published>
     <updated>2021-08-05T07:50:57.851Z</updated>
     
@@ -412,8 +433,8 @@ body
   
   <entry>
     <title>神奇的奇偶性剪枝--HDU1010题解</title>
-    <link href="https://inkuniverse.vercel.app/%E7%A5%9E%E5%A5%87%E7%9A%84%E5%A5%87%E5%81%B6%E6%80%A7%E5%89%AA%E6%9E%9D-HDU1010%E9%A2%98%E8%A7%A3/"/>
-    <id>https://inkuniverse.vercel.app/%E7%A5%9E%E5%A5%87%E7%9A%84%E5%A5%87%E5%81%B6%E6%80%A7%E5%89%AA%E6%9E%9D-HDU1010%E9%A2%98%E8%A7%A3/</id>
+    <link href="https://lhy-blog.vercel.app/%E7%A5%9E%E5%A5%87%E7%9A%84%E5%A5%87%E5%81%B6%E6%80%A7%E5%89%AA%E6%9E%9D-HDU1010%E9%A2%98%E8%A7%A3/"/>
+    <id>https://lhy-blog.vercel.app/%E7%A5%9E%E5%A5%87%E7%9A%84%E5%A5%87%E5%81%B6%E6%80%A7%E5%89%AA%E6%9E%9D-HDU1010%E9%A2%98%E8%A7%A3/</id>
     <published>2020-08-04T12:58:28.000Z</published>
     <updated>2021-08-05T07:50:57.851Z</updated>
     
@@ -432,8 +453,8 @@ body
   
   <entry>
     <title>强联通分量和双连通分量</title>
-    <link href="https://inkuniverse.vercel.app/%E5%BC%BA%E8%81%94%E9%80%9A%E5%88%86%E9%87%8F%E5%92%8C%E5%8F%8C%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F/"/>
-    <id>https://inkuniverse.vercel.app/%E5%BC%BA%E8%81%94%E9%80%9A%E5%88%86%E9%87%8F%E5%92%8C%E5%8F%8C%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F/</id>
+    <link href="https://lhy-blog.vercel.app/%E5%BC%BA%E8%81%94%E9%80%9A%E5%88%86%E9%87%8F%E5%92%8C%E5%8F%8C%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F/"/>
+    <id>https://lhy-blog.vercel.app/%E5%BC%BA%E8%81%94%E9%80%9A%E5%88%86%E9%87%8F%E5%92%8C%E5%8F%8C%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F/</id>
     <published>2020-07-27T11:30:07.000Z</published>
     <updated>2021-08-05T07:50:57.851Z</updated>
     
@@ -450,14 +471,14 @@ body
     
     
     
-      <category term="笔记" scheme="https://inkuniverse.vercel.app/tags/%E7%AC%94%E8%AE%B0/"/>
+      <category term="笔记" scheme="https://lhy-blog.vercel.app/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title>错误合辑</title>
-    <link href="https://inkuniverse.vercel.app/%E9%94%99%E8%AF%AF%E5%90%88%E8%BE%91/"/>
-    <id>https://inkuniverse.vercel.app/%E9%94%99%E8%AF%AF%E5%90%88%E8%BE%91/</id>
+    <link href="https://lhy-blog.vercel.app/%E9%94%99%E8%AF%AF%E5%90%88%E8%BE%91/"/>
+    <id>https://lhy-blog.vercel.app/%E9%94%99%E8%AF%AF%E5%90%88%E8%BE%91/</id>
     <published>2020-07-27T11:28:17.000Z</published>
     <updated>2021-08-05T07:50:57.851Z</updated>
     
@@ -476,30 +497,7 @@ body
     
     
     
-      <category term="笔记" scheme="https://inkuniverse.vercel.app/tags/%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>洛谷7月月赛题解 C P6687</title>
-    <link href="https://inkuniverse.vercel.app/%E6%B4%9B%E8%B0%B77%E6%9C%88%E6%9C%88%E8%B5%9B%E9%A2%98%E8%A7%A3-C-P6687/"/>
-    <id>https://inkuniverse.vercel.app/%E6%B4%9B%E8%B0%B77%E6%9C%88%E6%9C%88%E8%B5%9B%E9%A2%98%E8%A7%A3-C-P6687/</id>
-    <published>2020-07-26T09:08:38.000Z</published>
-    <updated>2021-08-05T07:50:57.851Z</updated>
-    
-    <content type="html"><![CDATA[<p>算法1:<br/><br />直接puts(“dldsgay!!1”);，期望获得 1 分。<br/><br /><br/></p><a id="more"></a><p>算法2:<br/><br />直接puts(“dldsgay!!1”);，期望获得 1 分。<br/><br /><br/><br />算法3:<br/><br />不难发现，由于只有一列，无法进行翻转操作。所以只需要判断当前状态和目标状态是否一致，若一致<br/><br />则<code>puts(&quot;0&quot;);</code>，不一致则<code>puts(&quot;dldsgay!!1&quot;);</code>。期望获得6分。<br/><br /><br/><br />算法4:<br/><br />有两列时，可以进行翻转操作了。不难发现，可达的状态只有两种，于是只需要判断这两种状态中有没<br/><br />有目标状态即可。结合算法3，期望得分11分。<br/></p><h1 id="判断无解"><a class="markdownIt-Anchor" href="#判断无解"></a> 判断无解:</h1><p>先考虑清楚无解的情况:<br/><br />如果存在现有状态的一列中的两个数，在目标状态中不在一列，则肯定无解。<br/><br />再考虑判断上下位置是否合法:显然对一列进行一次翻转之后，上下关系会交换一次。若从第z列翻转<br/><br />到第y列，则上下关系会交换|z一非次。那么对于现有状态的一列，判断其翻转到目标状态时，上下关<br/><br />系是否与其一致。若不一致则一定不可能合法。<br/><br />判断这两条之后，就能判定是否有解了。<br/></p><h1 id="深入思考问题转化br"><a class="markdownIt-Anchor" href="#深入思考问题转化br"></a> 深入思考，问题转化:<br/></h1><p>考虑到翻转操作不可能将一列拆散，事实上我们可以把一列“绑在一起”，直接看成一个序列的问题。<br/><br />现在问题就是:每次交换两个数，求问将现有序列交换成目标序列的最少步数。<br/><br /><br/><br />算法5<br/><br />直接BFs，实现优秀的话，结合算法4，期望得分25分。<br/><br />算法6<br/><br />设现有序列第i个位置上的数为A;，目标序列第i个位置上的数为B。<br/><br />设<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>C</mi><mi>B</mi></msub></mrow><annotation encoding="application/x-tex">C_B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05017em;">B</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>= <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>，则令<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">A</span></span></span></span>=<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>C</mi><msub><mi>A</mi><mi>i</mi></msub></msub></mrow><annotation encoding="application/x-tex">C_{A_i}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.93343em;vertical-align:-0.2501em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3280857142857143em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2501em;"><span></span></span></span></span></span></span></span></span></span>。<br/><br />则不难发现，对A操作使其变成B，等价于对4操作使得4升序。<br/><br />考虑到我们的操作是每次交换两个数，则不难发现最小操作次数为逆序对数。<br/><br />使用冒泡排序计算，复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>，期望得分63分。<br/><br />使用<strong>归并排序</strong>、树状数组或线段树等数据结构计算，复杂度O(n log n)，期望得分100分。<br/></p><h1 id="参考代码"><a class="markdownIt-Anchor" href="#参考代码"></a> 参考代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">2e6</span>+<span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">int</span> x=<span class="number">0</span>,f=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">char</span> c=getchar();</span><br><span class="line"><span class="keyword">while</span>(c &lt; <span class="string">'0'</span> || c &gt; <span class="string">'9'</span>)&#123;<span class="keyword">if</span>(c==<span class="string">'-'</span>)f=<span class="number">-1</span>;c=getchar();&#125;</span><br><span class="line"><span class="keyword">while</span>(c &gt;= <span class="string">'0'</span> &amp;&amp; c &lt;= <span class="string">'9'</span>)&#123;x=(x&lt;&lt;<span class="number">3</span>)+(x&lt;&lt;<span class="number">1</span>)+c<span class="number">-48</span>;c=getchar();&#125;</span><br><span class="line"><span class="keyword">return</span> x*f;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> k,m,n;</span><br><span class="line"><span class="keyword">int</span> a[maxn],b[maxn],c[maxn],d[maxn],fa[maxn],p[maxn];</span><br><span class="line">pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; P[maxn];</span><br><span class="line"><span class="keyword">int</span> sum[maxn];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;<span class="keyword">for</span>(<span class="keyword">int</span> i=x;i&lt;=n;i+=i&amp;-i)sum[i]++;&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;<span class="keyword">int</span> SUM=<span class="number">0</span>;<span class="keyword">for</span>(<span class="keyword">int</span> i=x;i;i-=i&amp;-i)SUM+=sum[i];<span class="keyword">return</span> SUM;&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">n=read();</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)a[i]=read();</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)b[i]=read();</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;c[i]=read();P[c[i]]=make_pair(i,<span class="number">1</span>);&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;d[i]=read();P[d[i]]=make_pair(i,<span class="number">2</span>);&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;fa[a[i]]=b[i];fa[b[i]]=a[i];&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">if</span>(fa[c[i]]!=d[i] || fa[d[i]]!=c[i])&#123;<span class="built_in">puts</span>(<span class="string">"dldsgay!!1"</span>);<span class="keyword">return</span> <span class="number">0</span>;&#125;</span><br><span class="line"><span class="keyword">if</span>((P[a[i]].first+P[a[i]].second)%<span class="number">2</span>!=(i+<span class="number">1</span>)%<span class="number">2</span>)&#123;<span class="built_in">puts</span>(<span class="string">"dldsgay!!1"</span>);<span class="keyword">return</span> <span class="number">0</span>;&#125;</span><br><span class="line"><span class="keyword">if</span>((P[b[i]].first+P[b[i]].second)%<span class="number">2</span>!=(i+<span class="number">2</span>)%<span class="number">2</span>)&#123;<span class="built_in">puts</span>(<span class="string">"dldsgay!!1"</span>);<span class="keyword">return</span> <span class="number">0</span>;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)p[a[i]]=i;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)c[i]=p[c[i]]+p[d[i]];</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> ans=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=n;i&gt;=<span class="number">1</span>;i--)</span><br><span class="line">&#123;<span class="comment">//树状数组求逆序对</span></span><br><span class="line">ans+=query(c[i]);</span><br><span class="line">add(c[i]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;算法1:&lt;br/&gt;&lt;br /&gt;
-直接puts(“dldsgay!!1”);，期望获得 1 分。&lt;br/&gt;&lt;br /&gt;
-&lt;br/&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="题解" scheme="https://inkuniverse.vercel.app/tags/%E9%A2%98%E8%A7%A3/"/>
+      <category term="笔记" scheme="https://lhy-blog.vercel.app/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
