@@ -20,7 +20,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"lhy-blog.vercel.app","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"lhy-blog.vercel.app","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="区间DP和树形DP 区间DP, 就是以区间作为状态的DP 树形DP, 就是以子树作为状态的DP 区间DP的一般套路 dp[l][r] 表示从l到r的状态值 树形DP的一般套路 dp[u][辅助数] 表示以 u 为根节点的子树，满足条件的状态值。 典型例题:">
@@ -236,26 +236,6 @@ dp[u][辅助数] 表示以 u 为根节点的子树，满足条件的状态值。
     
     
     
-        <div class="reward-container">
-  <div>你的支持是我写作的最大动力</div>
-  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-    打赏
-  </button>
-  <div id="qr" style="display: none;">
-      
-      <div style="display: inline-block;">
-        <img src="/images/wechatpay.jpg" alt="海逸 微信支付">
-        <p>微信支付</p>
-      </div>
-      
-      <div style="display: inline-block;">
-        <img src="/images/alipay.jpg" alt="海逸 支付宝">
-        <p>支付宝</p>
-      </div>
-
-  </div>
-</div>
-
         
 
   <div class="followme">
@@ -321,8 +301,8 @@ dp[u][辅助数] 表示以 u 为根节点的子树，满足条件的状态值。
       <i class="fa fa-chevron-left"></i> ZROI-day2
     </a></div>
       <div class="post-nav-item">
-    <a href="/day21/" rel="next" title="day21">
-      day21 <i class="fa fa-chevron-right"></i>
+    <a href="/day21/" rel="next" title="ZROI-day21">
+      ZROI-day21 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -397,7 +377,7 @@ dp[u][辅助数] 表示以 u 为根节点的子树，满足条件的状态值。
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">37</span>
+          <span class="site-state-item-count">38</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://lhy-blog.vercel.app/ZROI-day22/</loc>
+    
+    <lastmod>2021-08-08</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://lhy-blog.vercel.app/day21/</loc>
     
-    <lastmod>2021-08-07</lastmod>
+    <lastmod>2021-08-08</lastmod>
     
   </url>
   
@@ -270,7 +277,7 @@
 
   <url>
     <loc>https://lhy-blog.vercel.app/</loc>
-    <lastmod>2021-08-07</lastmod>
+    <lastmod>2021-08-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -278,35 +285,35 @@
   
   <url>
     <loc>https://lhy-blog.vercel.app/tags/%E6%B4%9B%E8%B0%B7%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2021-08-07</lastmod>
+    <lastmod>2021-08-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://lhy-blog.vercel.app/tags/%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2021-08-07</lastmod>
+    <lastmod>2021-08-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://lhy-blog.vercel.app/tags/%E9%A2%98%E8%A7%A3/</loc>
-    <lastmod>2021-08-07</lastmod>
+    <lastmod>2021-08-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://lhy-blog.vercel.app/tags/%E5%BF%83%E5%BE%97%E5%88%86%E4%BA%AB/</loc>
-    <lastmod>2021-08-07</lastmod>
+    <lastmod>2021-08-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://lhy-blog.vercel.app/tags/%E7%BD%91%E7%AB%99/</loc>
-    <lastmod>2021-08-07</lastmod>
+    <lastmod>2021-08-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>

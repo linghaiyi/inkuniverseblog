@@ -268,15 +268,15 @@ tag_icon: false
 # Front-matter variable (unsupport animation).
 reward_settings:
   # If true, reward will be displayed in every article by default.
-  enable: true
+  enable: false
   animation: true
   comment: 你的支持是我写作的最大动力
 
 reward:
-  wechatpay: /images/wechatpay.jpg
-  alipay: /images/alipay.jpg
-  #paypal: /images/paypal.png
-  #bitcoin: /images/bitcoin.png
+  # wechatpay: /images/wechatpay.jpg
+  # alipay: /images/alipay.jpg
+  # paypal: /images/paypal.png
+  # bitcoin: /images/bitcoin.png
 
 # Subscribe through Telegram Channel, Twitter, etc.
 # Usage: `Key: permalink || icon` (Font Awesome)
@@ -358,6 +358,8 @@ android_chrome_color: "#222"
 # Custom Logo (Do not support scheme Mist)
 custom_logo: #/uploads/custom-logo.jpg
 
+
+# 一键复制
 codeblock:
   # Code Highlight theme
   # Available values: normal | night | night eighties | night blue | night bright | solarized | solarized dark | galactic
@@ -365,9 +367,9 @@ codeblock:
   highlight_theme: normal
   # Add copy button on codeblock
   copy_button:
-    enable: false
+    enable: true
     # Show text copy result.
-    show_result: false
+    show_result: true
     # Available values: default | flat | mac
     style:
 
