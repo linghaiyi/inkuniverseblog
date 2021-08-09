@@ -177,16 +177,16 @@ site_state: true
 # Key is the link label showing to end users.
 # Value before `||` delimiter is the target permalink, value after `||` delimiter is the name of Font Awesome icon.
 social:
-  GitHub: https://github.com/inkuniverse || fab fa-github
-  E-Mail: mailto:inkuniverse@outlook.com || fa fa-envelope
+  GitHub: https://github.com/linghaiyi || fab fa-github
+  E-Mail: mailto:linghaiyi@outlook.com || fa fa-envelope
   #Weibo: https://weibo.com/yourname || fab fa-weibo
   #Google: https://plus.google.com/yourname || fab fa-google
   Twitter: https://twitter.com/inkuniverse233 || fab fa-twitter
   #FB Page: https://www.facebook.com/yourname || fab fa-facebook
   StackOverflow: https://stackoverflow.com/users/13606382/inkuniverse || fab fa-stack-overflow
   YouTube: https://youtube.com/inkuniverse.steve || fab fa-youtube
-  Telegram: https://t.me/inkuniverse || fab fa-telegram
-  TGroup: https://t.me/coderabbit || fab fa-telegram
+  # Telegram: https://t.me/inkuniverse || fab fa-telegram
+  # TGroup: https://t.me/coderabbit || fab fa-telegram
   #Instagram: https://instagram.com/yourname || fab fa-instagram
   #Skype: skype:yournamesk?call|chat || fab fa-skype
 
@@ -648,8 +648,8 @@ gitalk:
   enable: true
   github_id: linghaiyi # GitHub repo owner
   repo: gitalk # Repository name to store issues
-  client_id: c9954d14d9db6be9a471 # GitHub Application Client ID
-  client_secret: f29b8567cae382d304eab2ce78b941bbeb96e500 # GitHub Application Client Secret
+  client_id: fc03553a0e4ac80ab066 # GitHub Application Client ID
+  client_secret: 46b55fd7ccb03e0b252785b201d7ce724619a4c1 # GitHub Application Client Secret
   admin_user: linghaiyi # GitHub repo owner and collaborators, only these guys can initialize gitHub issues
   distraction_free_mode: true # Facebook-like distraction free mode
   # Gitalk's display language depends on user's browser or system environment
