@@ -95,16 +95,16 @@ tags:
    我们想要说明如果 $a$ 和 $b$ 异或卷积后的结果为 $c$ ，那么有 $FWT(c)_i=FWT(a)_i\cdot FWT(b)_i$ 。
 
    证明：
+   <!-- \begin{align} -->
    $$
-   \begin{align}
-   FWT(c)_i&=\sum\limits_{j=0}^{2^n-1}(-1)^{|i\wedge j|}c_j\\
-   &=\sum\limits_{j=0}^{2^n-1}(-1)^{|i\wedge j|}\sum\limits_{k=0}^{2^n-1}\sum\limits_{l=0}^{2^n-1}[k\oplus l=j]a_kb_l\\
-   &=\sum\limits_{k=0}^{2^n-1}\sum\limits_{l=0}^{2^n-1}(-1)^{|(k\oplus l)\wedge i|}a_kb_l\\
-   &=\sum\limits_{k=0}^{2^n-1}\sum\limits_{l=0}^{2^n-1}(-1)^{|k\wedge i|}a_k\cdot (-1)^{|l\wedge i|} b_l\\
-   &=(\sum\limits_{k=0}^{2^n-1}(-1)^{|k\wedge i|}a_k)(\sum\limits_{l=0}^{2^n-1}(-1)^{|l\wedge i|}b_l)\\
-   &=FWT(a)_i\cdot FWT(b)_i
-   \end{align}
+   FWT(c)_i=\sum\limits_{j=0}^{2^n-1}(-1)^{|i\wedge j|}c_j\\
+   =\sum\limits_{j=0}^{2^n-1}(-1)^{|i\wedge j|}\sum\limits_{k=0}^{2^n-1}\sum\limits_{l=0}^{2^n-1}[k\oplus l=j]a_kb_l\\
+   =\sum\limits_{k=0}^{2^n-1}\sum\limits_{l=0}^{2^n-1}(-1)^{|(k\oplus l)\wedge i|}a_kb_l\\
+   =\sum\limits_{k=0}^{2^n-1}\sum\limits_{l=0}^{2^n-1}(-1)^{|k\wedge i|}a_k\cdot (-1)^{|l\wedge i|} b_l\\
+   =(\sum\limits_{k=0}^{2^n-1}(-1)^{|k\wedge i|}a_k)(\sum\limits_{l=0}^{2^n-1}(-1)^{|l\wedge i|}b_l)\\
+   =FWT(a)_i\cdot FWT(b)_i
    $$
+   <!-- \end{align} -->
    所以我们要做的事情就是分别对 $a,b$ 求出 $FWT$ 后对应相乘再做 $FWT$ 的逆变换即可。
 
    和高维前缀和相似，我们对每一位依次考虑。对于第 $i$​ 位和一个不包含 $i$​ 的集合 $S$​​ ，设 $x=a_S,y=a_{S+2^i}$​ ，则有新的 $a_S=x+y,a_{S+2^i}=x-y$​ 。这样我们就以 $O(2^nn)$ 的时间复杂度求出了 $FWT$​ 。
