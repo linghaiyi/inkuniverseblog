@@ -28,7 +28,6 @@
 <meta property="og:url" content="https://lhy-blog.vercel.app/page/5/index.html">
 <meta property="og:site_name" content="信行散记">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:author" content="蜀川">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://lhy-blog.vercel.app/page/5/">
@@ -183,11 +182,164 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lhy-blog.vercel.app/%E6%B5%85%E8%B0%88%E7%BA%BF%E6%AE%B5%E6%A0%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="信行散记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/%E6%B5%85%E8%B0%88%E7%BA%BF%E6%AE%B5%E6%A0%91/" class="post-title-link" itemprop="url">浅谈线段树</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-19 21:25:19" itemprop="dateCreated datePublished" datetime="2020-06-19T21:25:19+08:00">2020-06-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-05 15:50:57" itemprop="dateModified" datetime="2021-08-05T15:50:57+08:00">2021-08-05</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="线段树介绍"><a class="markdownIt-Anchor" href="#线段树介绍"></a> 线段树介绍</h2>
+<p><strong>线段树</strong>是处理区间问题的一种数据结构，它可以处理的问题有：</p>
+<ul>
+<li>区间查询</li>
+<li>单点查询</li>
+<li>区间更新</li>
+<li>单点更新</li>
+</ul>
+<h2 id="线段树的性质"><a class="markdownIt-Anchor" href="#线段树的性质"></a> 线段树的性质</h2>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/%E6%B5%85%E8%B0%88%E7%BA%BF%E6%AE%B5%E6%A0%91/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lhy-blog.vercel.app/%E6%B5%85%E8%B0%88%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="信行散记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/%E6%B5%85%E8%B0%88%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" class="post-title-link" itemprop="url">浅谈树状数组</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-19 21:25:19" itemprop="dateCreated datePublished" datetime="2020-06-19T21:25:19+08:00">2020-06-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-05 15:50:57" itemprop="dateModified" datetime="2021-08-05T15:50:57+08:00">2021-08-05</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>和<a href="/%E6%B5%85%E8%B0%88%E7%BA%BF%E6%AE%B5%E6%A0%91/#more">线段树</a>一样,树状数组也是处理区间操作的利器，可以处理的区间问题有：</p>
+<p>区间查询 单点查询 单点更新</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/%E6%B5%85%E8%B0%88%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://lhy-blog.vercel.app/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%A7%81%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%92%8C%E8%AE%BA%E5%9D%9B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="蜀川">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
     </span>
 
@@ -262,7 +414,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="蜀川">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
     </span>
 
@@ -338,7 +490,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="蜀川">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
     </span>
 
@@ -468,9 +620,9 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="蜀川"
+    <img class="site-author-image" itemprop="image" alt=""
       src="/images/avatar.png">
-  <p class="site-author-name" itemprop="name">蜀川</p>
+  <p class="site-author-name" itemprop="name"></p>
   <div class="site-description" itemprop="description"></div>
 </div>
 <div class="site-state-wrap motion-element">
@@ -478,7 +630,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-count">45</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -561,7 +713,7 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">蜀川</span>
+  <span class="author" itemprop="copyrightHolder"></span>
 </div>
   <div class="powered-by">墨宇 (<a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>)
   </div>
