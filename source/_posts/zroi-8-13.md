@@ -11,7 +11,7 @@ GF (生成函数, Generating Function) 是 OI 中一项常用的解决问题方�
 分为OGF(普通生成函数)和EGF两种。
 ## OGF
 其一般形式为
-$$.
+$$
 \sum a_i x^i 
 $$
 常用于组合
